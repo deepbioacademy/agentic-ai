@@ -61,6 +61,18 @@ Code: pages in `src/app/`, shared pieces in `src/components/`, design tokens (fl
 
 ## Deploy
 
+The site is a static export (`out/`), so it can be hosted anywhere. Two targets are set up.
+
+### Netlify
+
+`netlify.toml` holds the settings: build with `npm run build`, publish `out/`, Node 22, no sub-path. To go live:
+
+1. In Netlify choose **Add new site → Import an existing project** and pick this GitHub repository.
+2. Leave the build settings as detected (they come from `netlify.toml`) and deploy.
+3. Every push to the production branch redeploys; pull requests get preview URLs.
+
+### GitHub Pages
+
 Pushing to `main` deploys the site to GitHub Pages via `.github/workflows/deploy.yml`
 (lint, static export to `out/`, publish). Live at https://deepbioacademy.github.io/agentic-ai/.
 
