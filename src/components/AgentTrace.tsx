@@ -39,7 +39,7 @@ export default function AgentTrace() {
         <span className="trace-dot" />
         <span className="trace-dot" />
         <span className="trace-dot" />
-        <span className="ml-2">agent-eval</span>
+        <span className="ml-2">antigravity</span>
         <span className="ml-auto flex items-center gap-1.5">
           <span
             className={`inline-block h-1.5 w-1.5 rounded-full ${finished ? "bg-emerald-400" : "bg-amber-400 animate-pulse"}`}
