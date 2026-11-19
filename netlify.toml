@@ -1,0 +1,24 @@
+# Netlify deployment. The site is a static export (see next.config.ts), so
+# Netlify only needs to run the build and publish the out/ folder.
+[build]
+  command = "npm run build"
+  publish = "out"
+
+[build.environment]
+  NODE_VERSION = "22"
+  # Netlify serves the site from the domain root, so no sub-path prefix.
+  # (GitHub Pages sets this to "/agentic-ai" in its own workflow.)
+  NEXT_PUBLIC_BASE_PATH = ""
+
+# Fingerprinted build assets never change, so let browsers keep them.
+[[headers]]
+  for = "/_next/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    Referrer-Policy = "strict-origin-when-cross-origin"
